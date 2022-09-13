@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+
+  <h1>All Students</h1>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Twitter</th>
+        <th>User Id</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @trainees.each do |trainee| %>
+        <% if trainee.user == current_user %>
+        <tr>
+          <td><%= link_to trainee.first_name + '  ' + trainee.last_name, trainee %></td>
+          <td><%= trainee.email %></td>
+          <td><%= trainee.phone %></td>
+          <td><%= trainee.twitter %></td>
+          <td><%= trainee.user_id %></td>
+          <td><%= link_to 'Edit', edit_trainee_path(trainee) %></td>
+          <td><%= link_to 'Destroy', trainee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Trainee', new_trainee_path, class:"btn btn-secondary"%>
+<% else %>
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<% end  %>

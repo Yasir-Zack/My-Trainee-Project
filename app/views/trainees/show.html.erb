@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1 class="display-4">
+  <%= @trainee.first_name %>
+  <%= @trainee.last_name %>
+  </h1>
+  <p class="lead">  
+  <%= @trainee.email %>
+  <%= @trainee.phone %>
+  <%= @trainee.twitter %>
+</p>
+  <hr class="my-4">
+  <%= link_to 'Edit', edit_trainee_path(@trainee),class:"btn btn-secondary"%> |
+  <%= link_to 'Back', trainees_path ,class:"btn btn-dark"%>
+
+
+

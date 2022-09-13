@@ -1,0 +1,45 @@
+<%= form_with(model: trainee, local: true) do |form| %>
+  <% if trainee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trainee.errors.count, "error") %> prohibited this trainee from being saved:</h2>
+
+      <ul>
+      <% trainee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <% form.label :first_name %>
+    <%= form.text_field :first_name ,class:"form-control", placeholder:"First Name"%>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :last_name %>
+    <%= form.text_field :last_name ,class:"form-control",placeholder:"last name"%>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :email %>
+    <%= form.text_field :email ,class:"form-control" ,placeholder:"email"%>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :phone %>
+    <%= form.text_field :phone ,class:"form-control", placeholder:"phone number"%>
+  </div>
+
+  <div class="field mb-3">
+    <% form.label :twitter %>
+    <%= form.text_field :twitter ,class:"form-control",placeholder:"twitter"%>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.number_field :user_id, id: :trainee_user_id, class:"form-control", value:current_user.id ,type: :hidden%>
+  </div>
+  <div class="actions mb-3">
+    <%= form.submit 'Submit' ,class:"btn btn-primary"%>
+  </div>
+<% end %>
